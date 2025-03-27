@@ -10,7 +10,7 @@ export const Container = styled.View`
 export const TitleView = styled.View`
   width: 100%;
   align-items: center;
-  padding-bottom: 20px;
+  padding-bottom: 14px;
 `;
 
 export const TitleInfoView = styled.View`

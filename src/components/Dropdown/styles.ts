@@ -1,30 +1,40 @@
-import { StyleSheet } from 'react-native';
+import styled from 'styled-components/native';
+import { TouchableOpacity } from 'react-native';
 
-export default StyleSheet.create({
-  dropdown: {
-    width: '80%',
-    borderWidth: 1,
-    borderColor: '#000',
-    borderRadius: 4,
-    marginVertical: 10,
-    backgroundColor: '#1c1c1e',
-    zIndex: 1,
-  },
-  selectedItem: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: 10,
-  },
-  options: {
-    position: 'absolute',
-    top: 40,
-    width: '100%',
-    backgroundColor: '#1c1c1e',
-    borderRadius: 4,
-    zIndex: 2,
-  },
-  text: {
-    color: '#fff',
-  },
-});
+export const DropdownContainer = styled.View`
+  width: 80%;
+  border-width: 1px;
+  border-color: #000;
+  border-radius: 8px;
+  margin-vertical: 10px;
+  background-color: #1c1c1e;
+  z-index: 1;
+`;
+
+export const SelectedItem = styled(TouchableOpacity)`
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+`;
+
+export const OptionsContainer = styled.View`
+  position: absolute;
+  top: 40px;
+  width: 100%;
+  background-color: #1c1c1e;
+  border-radius: 4px;
+  z-index: 2;
+  padding-top: 8px;
+`;
+
+export const OptionText = styled.Text`
+  color: #fff;
+  padding: 10px;
+`;
+
+export const IconContainer = styled.View`
+  width: 24px;
+  align-items: center;
+  justify-content: center;
+`;

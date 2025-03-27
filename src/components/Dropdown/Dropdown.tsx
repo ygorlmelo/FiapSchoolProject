@@ -1,9 +1,17 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
+import { Image, TouchableOpacity } from 'react-native';
 import { format, addDays } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
-import styles from './styles';
+import {
+  DropdownContainer,
+  SelectedItem,
+  OptionsContainer,
+  OptionText,
+  IconContainer,
+} from './styles';
+
+import chevronDown from '../../assets/chevronDown.png';
+import chevronUp from '../../assets/chevronUp.png';
 
 const Dropdown: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,25 +28,33 @@ const Dropdown: React.FC = () => {
   });
 
   return (
-    <View style={styles.dropdown}>
-      <TouchableOpacity style={styles.selectedItem} onPress={() => setIsOpen(!isOpen)}>
-        <Text style={styles.text}>{selectedItem}</Text>
-        <Icon name={isOpen ? 'chevron-up' : 'chevron-down'} size={20} color="#fff" />
-      </TouchableOpacity>
+    <DropdownContainer>
+      <SelectedItem onPress={() => setIsOpen(!isOpen)}>
+        <OptionText>{selectedItem}</OptionText>
+        <IconContainer>
+          <Image
+            source={isOpen ? chevronUp : chevronDown}
+            style={{ width: 14, height: 14 }}
+          />
+        </IconContainer>
+      </SelectedItem>
 
       {isOpen && (
-        <View style={styles.options}>
+        <OptionsContainer>
           {items.map((item, index) => (
-            <TouchableOpacity key={index} onPress={() => {
-              setSelectedItem(item.label);
-              setIsOpen(false);
-            }}>
-              <Text style={styles.text}>{item.label}</Text>
+            <TouchableOpacity
+              key={index}
+              onPress={() => {
+                setSelectedItem(item.label);
+                setIsOpen(false);
+              }}
+            >
+              <OptionText>{item.label}</OptionText>
             </TouchableOpacity>
           ))}
-        </View>
+        </OptionsContainer>
       )}
-    </View>
+    </DropdownContainer>
   );
 };
 

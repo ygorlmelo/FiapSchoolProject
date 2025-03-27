@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState, useCallback } from 'react';
 import { View, Text, Image } from 'react-native';
+import { useFocusEffect } from '@react-navigation/native';
 import Header from '../../components/Header/Header';
 import Dropdown from '../../components/Dropdown/Dropdown';
 import styles from './styles';
@@ -8,8 +9,16 @@ import { getAlunoSelecionado, getResponsavel } from '../../services/responsavelS
 import { AulaScreenProps } from '../../../types/types';
 
 const AulaScreen: React.FC<AulaScreenProps> = ({ }) => {
-  const responsavel = getResponsavel();
-  const aluno = getAlunoSelecionado();
+  const [responsavel, setResponsavel] = useState(getResponsavel());
+  const [aluno, setAluno] = useState(getAlunoSelecionado());
+
+  useFocusEffect(
+    useCallback(() => {
+      setResponsavel(getResponsavel());
+      setAluno(getAlunoSelecionado());
+    }, [])
+  );
+
   const hasMultipleAlunos = (responsavel?.alunos?.length ?? 0) > 1;
 
   return (
@@ -21,7 +30,7 @@ const AulaScreen: React.FC<AulaScreenProps> = ({ }) => {
       </Text>
       <Text style={styles.subTitle}>{aluno?.primeiroNome}</Text>
       <Text style={styles.description}>
-        {`${aluno?.turma} - ${aluno?.rm} - ${aluno?.periodo}`}
+        {`${aluno?.turma} - RM ${aluno?.rm} - ${aluno?.periodo}`}
       </Text>
 
       <Text style={styles.sectionTitle}>AGENDA</Text>

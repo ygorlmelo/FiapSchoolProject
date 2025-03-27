@@ -10,17 +10,14 @@ export default StyleSheet.create({
     backgroundColor: '#000', // Ajuste conforme necessário
   },
   logo: {
-    width: 80,
+    width: 120,
     height: 30,
     resizeMode: 'contain',
-  },
-  rightSection: {
-    flexDirection: 'row',
-    alignItems: 'center',
   },
   profileBtn: {
     color: '#fff',
     fontWeight: 'bold',
-    marginRight: 16, // Espaço entre o texto e o ícone
+    fontSize: 14,
+    marginRight: 16,
   },
 });

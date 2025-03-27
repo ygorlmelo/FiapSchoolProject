@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 
-import { Container, Logo, InputContainer, ErrorMessage } from './styles';
+import { Container, Logo, InputContainer, ErrorMessage, Label } from './styles';
 import Input from '../../components/Input/Input';
 import Button from '../../components/Button/Button';
 import { maskCPF } from '../../utils/masks';
@@ -41,21 +42,28 @@ const LoginScreen: React.FC = () => {
     <Container>
       <Logo source={require('../../assets/fiap.png')} resizeMode="contain" />
       <InputContainer>
+        <Label>CPF</Label>
         <Input
-          placeholder="CPF"
           keyboardType="number-pad"
           value={maskCPF(cpf)}
           onChangeText={(text) => setCpf(text.replace(/\D/g, ''))}
           maxLength={14}
         />
+        <Label>SENHA</Label>
         <Input
-          placeholder="Senha"
           secureTextEntry={true}
           value={password}
           onChangeText={setPassword}
         />
         {error ? <ErrorMessage>{error}</ErrorMessage> : null}
-        <Button title="Fazer Login" onPress={handleLogin} />
+        <View>
+          <Button
+            title="FAZER LOGIN"
+            onPress={handleLogin}
+            buttonStyle={{ backgroundColor: '#29F4D5', padding: 2, borderRadius: 5, minHeight: 40 }}
+            textColor="#777777"
+          />
+        </View>
       </InputContainer>
     </Container>
   );

@@ -11,7 +11,7 @@ const Input: React.FC<Props> = ({ isPassword, ...rest }) => {
     <Container
       {...rest}
       secureTextEntry={isPassword}
-      placeholderTextColor="#888"
+      placeholderTextColor="#FFFFFF"
     />
   );
 };

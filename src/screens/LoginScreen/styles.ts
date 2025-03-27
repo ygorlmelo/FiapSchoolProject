@@ -9,13 +9,21 @@ export const Container = styled.View`
 `;
 
 export const Logo = styled.Image`
-  width: 200px;
-  height: 80px;
-  margin-bottom: 40px;
+  width: 80%;
+  height: 120px;
+  margin-bottom: 20px;
+  flex-shrink: 0;
 `;
 
 export const InputContainer = styled.View`
   width: 100%;
+`;
+
+export const Label = styled.Text`
+color: #FFFFFF;
+margin-bottom: 5px;
+font-size: 16px;
+text-align: center;
 `;
 
 export const ErrorMessage = styled.Text`

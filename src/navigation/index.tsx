@@ -11,10 +11,10 @@ import agendaLogo from '../assets/agendaLogo.png';
 import boletimLogo from '../assets/boletimLogo.png';
 
 import { TabIcon, TabIconContainer, styles } from './styles';
-import { RootStackParamList } from '../../types/types';
+import { RootStackParamList, RootTabParamList } from '../../types/types'; // Importe RootTabParamList
 
 const Stack = createStackNavigator<RootStackParamList>();
-const Tab = createBottomTabNavigator();
+const Tab = createBottomTabNavigator<RootTabParamList>(); // Defina o tipo aqui
 
 const AppTabs = () => (
   <Tab.Navigator

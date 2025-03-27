@@ -5,8 +5,9 @@ import Dropdown from '../../components/Dropdown/Dropdown';
 import styles from './styles';
 
 import { getResponsavel } from '../../services/responsavelService';
+import { AulaScreenProps } from '../../../types/types';
 
-const AulaScreen: React.FC = () => {
+const AulaScreen: React.FC<AulaScreenProps> = ({ }) => {
   const responsavel = getResponsavel();
   const hasMultipleAlunos = responsavel.alunos && responsavel.alunos.length > 1;
 

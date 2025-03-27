@@ -13,10 +13,12 @@ import {
 import chevronDown from '../../assets/chevronDown.png';
 import chevronUp from '../../assets/chevronUp.png';
 
-const Dropdown: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [selectedItem, setSelectedItem] = useState('16 de março, domingo');
+interface DropdownProps {
+  onDateChange: (data: Date) => void;
+}
 
+const Dropdown: React.FC<DropdownProps> = ({ onDateChange }) => {
+  const [isOpen, setIsOpen] = useState(false);
   // Gerar datas de 16 a 22 de março de 2025
   const startDate = new Date(2025, 2, 16); // Março é mês 2 (0 indexado)
   const items = Array.from({ length: 7 }, (_, i) => {
@@ -26,6 +28,7 @@ const Dropdown: React.FC = () => {
       value: date,
     };
   });
+  const [selectedItem, setSelectedItem] = useState(items[0].label);
 
   return (
     <DropdownContainer>
@@ -47,6 +50,7 @@ const Dropdown: React.FC = () => {
               onPress={() => {
                 setSelectedItem(item.label);
                 setIsOpen(false);
+                onDateChange(item.value); // <- Aqui dispara a atualização
               }}
             >
               <OptionText>{item.label}</OptionText>

@@ -2,6 +2,7 @@ import React, { useState, useCallback } from 'react';
 import { useFocusEffect } from '@react-navigation/native';
 import Header from '../../components/Header/Header';
 import Dropdown from '../../components/Dropdown/Dropdown';
+import ListaAulas from '../../components/ListaAulas/ListaAulas';
 import { getAlunoSelecionado, getResponsavel } from '../../services/responsavelService';
 import { AulaScreenProps } from '../../../types/types';
 import {
@@ -11,9 +12,6 @@ import {
   SubTitle,
   Description,
   SectionTitle,
-  ImageView,
-  ImageStyled,
-  FooterView,
   DropdownContainer,
   TitleView,
   TitleInfoView,
@@ -21,12 +19,13 @@ import {
 
 const AulaScreen: React.FC<AulaScreenProps> = () => {
   const [responsavel, setResponsavel] = useState(getResponsavel());
-  const [aluno, setAluno] = useState(getAlunoSelecionado());
+  const [aluno, setAluno] = useState(getAlunoSelecionado() ?? null);
+  const [dataSelecionada, setDataSelecionada] = useState(new Date(2025, 2, 16)); // início padrão
 
   useFocusEffect(
     useCallback(() => {
       setResponsavel(getResponsavel());
-      setAluno(getAlunoSelecionado());
+      setAluno(getAlunoSelecionado() ?? null); // <- adiciona fallback para null
     }, [])
   );
 
@@ -50,17 +49,9 @@ const AulaScreen: React.FC<AulaScreenProps> = () => {
         <SectionTitle><Bold>AGENDA</Bold></SectionTitle>
       </TitleView>
       <DropdownContainer>
-        <Dropdown />
+        <Dropdown onDateChange={setDataSelecionada} />
       </DropdownContainer>
-      <ImageView>
-        <ImageStyled
-          source={require('../../assets/aulaLogo.png')}
-          resizeMode="contain"
-        />
-      </ImageView>
-      <FooterView>
-        <Description>Sem aulas neste dia</Description>
-      </FooterView>
+      <ListaAulas aluno={aluno} dataSelecionada={dataSelecionada} />
     </Container>
   );
 };

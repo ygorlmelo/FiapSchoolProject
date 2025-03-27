@@ -12,7 +12,7 @@ const SelecaoPerfilScreen: React.FC<Props> = ({ navigation }) => {
 
   const handleSelectAluno = (index: number) => {
     setAlunoSelecionado(index);
-    navigation.goBack(); // volta para AulaScreen com novo aluno
+    navigation.goBack();
   };
 
   return (

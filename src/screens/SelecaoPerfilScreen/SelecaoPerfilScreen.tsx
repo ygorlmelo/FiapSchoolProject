@@ -1,12 +1,45 @@
 import React from 'react';
-import { Container, Title } from './style';
+import { SelecaoPerfilScreenNavigationProp } from '../../../types/types';
+import {
+  Container, Title, AlunoContainer, AlunoNome,
+  AlunoInfo, FecharButton, FecharText,
+} from './style';
+import { getResponsavel, getAlunoSelecionado, setAlunoSelecionado } from '../../services/responsavelService';
 
-const TrocarPerfilScreen = () => {
+const SelecaoPerfilScreen: React.FC<Props> = ({ navigation }) => {
+  const responsavel = getResponsavel();
+  const alunoAtual = getAlunoSelecionado();
+
+  const handleSelectAluno = (index: number) => {
+    setAlunoSelecionado(index);
+    navigation.goBack(); // volta para AulaScreen com novo aluno
+  };
+
   return (
     <Container>
-      <Title>Trocar Perfil</Title>
+      <Title>Escolha o perfil que você quer visualizar</Title>
+      {responsavel?.alunos.map((aluno, index) => {
+        const isSelected = aluno.rm === alunoAtual?.rm;
+        return (
+          <AlunoContainer
+            key={aluno.rm}
+            onPress={() => handleSelectAluno(index)}
+            style={{ backgroundColor: isSelected ? '#e0f7fa' : 'white' }}
+          >
+            <AlunoNome>{aluno.primeiroNome.toUpperCase()} {responsavel.sobrenome.toUpperCase()}</AlunoNome>
+            <AlunoInfo>{`${aluno.turma} - RM ${aluno.rm} - ${aluno.periodo}`}</AlunoInfo>
+          </AlunoContainer>
+        );
+      })}
+      <FecharButton onPress={() => navigation.goBack()}>
+        <FecharText>FECHAR</FecharText>
+      </FecharButton>
     </Container>
   );
 };
 
-export default TrocarPerfilScreen;
+type Props = {
+  navigation: SelecaoPerfilScreenNavigationProp;
+};
+
+export default SelecaoPerfilScreen;

@@ -23,3 +23,21 @@ export type SelecaoPerfilScreenNavigationProp = StackNavigationProp<RootStackPar
 // Screen props para cada screen do Tab Navigator
 export type AulaScreenProps = BottomTabScreenProps<RootTabParamList, 'Aulas'>;
 export type BoletimScreenProps = BottomTabScreenProps<RootTabParamList, 'Boletim'>;
+
+export interface Aluno {
+    rm: number;
+    turma: string;
+    periodo: string;
+    primeiroNome: string;
+    agenda: any[];
+  }
+
+  export interface Responsavel {
+    id: number;
+    cpf: string;
+    email: string;
+    senha: string;
+    primeiroNome: string;
+    sobrenome: string;
+    alunos: Aluno[];
+  }

@@ -10,7 +10,6 @@ import BoletimScreen from '../screens/BoletimScreen/BoletimScreen';
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
-// Tab navigator com Aulas e Boletim
 const AppTabs = () => (
   <Tab.Navigator
     screenOptions={({ route }) => ({
@@ -20,7 +19,6 @@ const AppTabs = () => (
       },
       tabBarActiveTintColor: '#00FFFF',
       tabBarInactiveTintColor: 'gray',
-      headerShown: false,
     })}
   >
     <Tab.Screen name="Aulas" component={AulaScreen} />

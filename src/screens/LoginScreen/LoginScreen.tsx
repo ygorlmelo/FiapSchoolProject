@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
@@ -21,7 +20,7 @@ const LoginScreen: React.FC = () => {
     const verifySession = async () => {
       const logged = await isLoggedIn();
       if (logged) {
-        navigation.replace('Classes');
+        navigation.replace('MainTabs');
       }
     };
 
@@ -32,10 +31,9 @@ const LoginScreen: React.FC = () => {
     try {
       const token = await login(cpf, password);
       await AsyncStorage.setItem('userToken', token);
-      navigation.replace('Classes');
-    } catch (err: any) {
-      setError(err.message || 'Usuário ou senha inválidos.');
-      Alert.alert('Erro', 'Usuário ou senha inválidos.');
+      navigation.replace('MainTabs');
+    } catch (err) {
+      setError('Usuário ou senha inválida.\nPode tentar novamente?');
     }
   };
 

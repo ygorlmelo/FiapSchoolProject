@@ -1,29 +1,31 @@
+// /src/screens/AulaScreen/AulaScreen.tsx
 import React from 'react';
-import { Text, Image, TouchableOpacity } from 'react-native';
-import { Container, Header, Title, SubTitle, Description, SectionTitle, Dropdown, StyledImage, ImageCaption } from './styles';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
+import styles from './styles';
 
 const AulaScreen: React.FC = () => {
   return (
-    <Container>
-      <Header>
-        <Image source={require('../../assets/fiap.png')} style={{ width: 80, height: 30 }} resizeMode="contain" />
+    <View style={styles.container}>
+      <View style={styles.header}>
+        <Icon name="menu" size={24} color="#fff" />
         <TouchableOpacity>
-          <Text style={{ color: '#fff', fontWeight: 'bold' }}>TROCAR PERFIL</Text>
+          <Text style={styles.profileBtn}>TROCAR PERFIL</Text>
         </TouchableOpacity>
-      </Header>
+      </View>
 
-      <Title>Olá, <Text style={{ fontWeight: 'bold' }}>GUSTAVO</Text></Title>
-      <SubTitle>RAFAEL</SubTitle>
-      <Description>7EF - RM 12567 - Matutino</Description>
+      <Text style={styles.title}>Olá, <Text style={styles.bold}>ALUNO</Text></Text>
+      <Text style={styles.subTitle}>Rafael</Text>
+      <Text style={styles.description}>descrição</Text>
 
-      <SectionTitle>AGENDA</SectionTitle>
-      <Dropdown>
-        <Text style={{ color: '#000' }}>16 de março, domingo</Text>
-      </Dropdown>
+      <Text style={styles.sectionTitle}>AGENDA</Text>
+      <View style={styles.dropdown}>
+        <Text>16 de março, domingo</Text>
+      </View>
 
-      <StyledImage source={require('../../assets/aulaLogo.png')} resizeMode="contain" />
-      <ImageCaption>Sem aulas neste dia</ImageCaption>
-    </Container>
+      <Image source={require('../../assets/aulaLogo.png')} style={styles.image} />
+      <Text style={styles.imageCaption}>Descrição 2</Text>
+    </View>
   );
 };
 

@@ -1,12 +1,12 @@
 import React from 'react';
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import AppNavigator from './src/navigation';
+import { NavigationContainer } from '@react-navigation/native';
+import AppNavigator from './src/navigation/index';
 
-const App: React.FC = () => {
+const App = () => {
   return (
-    <GestureHandlerRootView style={{ flex: 1 }}>
+    <NavigationContainer>
       <AppNavigator />
-    </GestureHandlerRootView>
+    </NavigationContainer>
   );
 };
 

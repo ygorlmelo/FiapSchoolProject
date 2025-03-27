@@ -5,13 +5,15 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import LoginScreen from '../screens/LoginScreen/LoginScreen';
 import AulaScreen from '../screens/AulaScreen/AulaScreen';
 import BoletimScreen from '../screens/BoletimScreen/BoletimScreen';
+import SelecaoPerfil from '../screens/SelecaoPerfilScreen/SelecaoPerfilScreen';
 
 import agendaLogo from '../assets/agendaLogo.png';
 import boletimLogo from '../assets/boletimLogo.png';
 
 import { TabIcon, TabIconContainer, styles } from './styles';
+import { RootStackParamList } from '../../types/types';
 
-const Stack = createStackNavigator();
+const Stack = createStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator();
 
 const AppTabs = () => (
@@ -48,6 +50,7 @@ const AppNavigator: React.FC = () => (
   <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="Login">
     <Stack.Screen name="Login" component={LoginScreen} />
     <Stack.Screen name="MainTabs" component={AppTabs} />
+    <Stack.Screen name="SelecaoPerfil" component={SelecaoPerfil} />
   </Stack.Navigator>
 );
 

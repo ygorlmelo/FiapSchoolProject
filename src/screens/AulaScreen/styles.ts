@@ -1,60 +1,73 @@
-// /src/screens/AulaScreen/styles.ts
-import { StyleSheet } from 'react-native';
+import styled from 'styled-components/native';
 
-export default StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#000',
-    alignItems: 'center',
-    justifyContent: 'flex-start',  // Altere para flex-start
-    paddingBottom: 20,
-  },
-  content: {
-    alignItems: 'center',
-    marginTop: 20,
-  },
-  header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    width: '100%',
-    padding: 16,
-    backgroundColor: '#000',
-  },
-  title: {
-    color: '#fff',
-    fontSize: 24,
-    marginTop: 20,
-  },
-  bold: {
-    fontWeight: 'bold',
-  },
-  subTitle: {
-    color: '#fff',
-    fontSize: 18,
-  },
-  description: {
-    color: '#fff',
-    fontSize: 16,
-    marginBottom: 20,
-  },
-  sectionTitle: {
-    color: '#00FFFF',
-    marginTop: 20,
-  },
-  dropdown: {
-    backgroundColor: '#fff',
-    padding: 10,
-    borderRadius: 4,
-    marginVertical: 10,
-  },
-  image: {
-    width: '80%',
-    height: undefined,
-    aspectRatio: 1,
-  },
-  imageCaption: {
-    color: '#fff',
-    marginTop: 10,
-  },
-});
+export const Container = styled.View`
+  flex: 1;
+  background-color: #000;
+  align-items: center;
+  justify-content: flex-start;
+`;
+
+export const TitleView = styled.View`
+  width: 100%;
+  align-items: center;
+  padding-bottom: 20px;
+`;
+
+export const TitleInfoView = styled.View`
+  width: 100%;
+  align-items: center;
+  padding-top:12px;
+`;
+
+export const Title = styled.Text`
+  color: #fff;
+  font-size: 24px;
+  margin-top: 20px;
+`;
+
+export const Bold = styled.Text`
+  font-weight: bold;
+`;
+
+export const SubTitle = styled.Text`
+  color: #fff;
+  font-size: 18px;
+`;
+
+export const Description = styled.Text`
+  color: #fff;
+  font-size: 16px;
+  margin-bottom: 20px;
+  text-align: center;
+`;
+
+export const SectionTitle = styled.Text`
+  color: #00FFFF;
+  margin-top: 20px;
+  font-size: 20px;
+`;
+
+export const DropdownContainer = styled.View`
+  width: 110%;
+  align-items: center;
+`;
+
+export const ImageView = styled.View`
+  flex: 1;  
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+`;
+
+export const ImageStyled = styled.Image`
+  height: auto;
+  max-height: 300px;
+  aspect-ratio: 1;
+`;
+
+export const FooterView = styled.View`
+  padding: 10px;
+  align-items: center;
+  width: 100%;
+`;
+

@@ -6,6 +6,12 @@ export default StyleSheet.create({
     flex: 1,
     backgroundColor: '#000',
     alignItems: 'center',
+    justifyContent: 'flex-start',  // Altere para flex-start
+    paddingBottom: 20,
+  },
+  content: {
+    alignItems: 'center',
+    marginTop: 20,
   },
   header: {
     flexDirection: 'row',
@@ -43,10 +49,9 @@ export default StyleSheet.create({
     marginVertical: 10,
   },
   image: {
-    width: '80%', // Use uma largura flexível
+    width: '80%',
     height: undefined,
-    aspectRatio: 1, // Ajuste conforme necessário para manter a proporção correta
-    marginVertical: 20,
+    aspectRatio: 1,
   },
   imageCaption: {
     color: '#fff',

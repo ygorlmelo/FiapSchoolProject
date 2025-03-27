@@ -5,8 +5,8 @@ import { Container } from './styles';
 interface Props {
   title: string;
   onPress: () => void;
-  buttonStyle?: ViewStyle; // Estilo para o botão
-  textColor?: string; // Cor do texto
+  buttonStyle?: ViewStyle;
+  textColor?: string;
 }
 
 const Button: React.FC<Props> = ({ title, onPress, buttonStyle, textColor }) => {

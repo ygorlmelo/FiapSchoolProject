@@ -1,18 +1,12 @@
-// /src/screens/AulaScreen/AulaScreen.tsx
 import React from 'react';
-import { View, Text, Image, TouchableOpacity } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
+import { View, Text, Image } from 'react-native';
+import Header from '../..//components/Header/Header';
 import styles from './styles';
 
 const AulaScreen: React.FC = () => {
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <Icon name="menu" size={24} color="#fff" />
-        <TouchableOpacity>
-          <Text style={styles.profileBtn}>TROCAR PERFIL</Text>
-        </TouchableOpacity>
-      </View>
+      <Header />
 
       <Text style={styles.title}>Olá, <Text style={styles.bold}>ALUNO</Text></Text>
       <Text style={styles.subTitle}>Rafael</Text>
@@ -23,7 +17,12 @@ const AulaScreen: React.FC = () => {
         <Text>16 de março, domingo</Text>
       </View>
 
-      <Image source={require('../../assets/aulaLogo.png')} style={styles.image} />
+      <Image
+        source={require('../../assets/aulaLogo.png')}
+        style={styles.image}
+        resizeMode="contain" // Adicione esta linha
+      />
+
       <Text style={styles.imageCaption}>Descrição 2</Text>
     </View>
   );

@@ -17,8 +17,12 @@ const AppTabs = () => (
         let iconName = route.name === 'Aulas' ? 'calendar' : 'document-text';
         return <Icon name={iconName} size={size} color={color} />;
       },
-      tabBarActiveTintColor: '#00FFFF',
-      tabBarInactiveTintColor: 'gray',
+      tabBarActiveTintColor: '#29F4D5',
+      tabBarInactiveTintColor: '#FFFFFF',
+      tabBarStyle: {
+        backgroundColor: '#262626', // Cor da barra
+      },
+      headerShown: false,
     })}
   >
     <Tab.Screen name="Aulas" component={AulaScreen} />

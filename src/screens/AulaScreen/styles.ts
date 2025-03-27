@@ -10,12 +10,10 @@ export default StyleSheet.create({
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'center',
     width: '100%',
     padding: 16,
-  },
-  profileBtn: {
-    color: '#fff',
-    fontWeight: 'bold',
+    backgroundColor: '#000',
   },
   title: {
     color: '#fff',
@@ -45,9 +43,10 @@ export default StyleSheet.create({
     marginVertical: 10,
   },
   image: {
-    width: 100,
-    height: 100,
-    marginTop: 20,
+    width: '80%', // Use uma largura flexível
+    height: undefined,
+    aspectRatio: 1, // Ajuste conforme necessário para manter a proporção correta
+    marginVertical: 20,
   },
   imageCaption: {
     color: '#fff',

@@ -1,10 +1,19 @@
 import React from 'react';
 import { SelecaoPerfilScreenNavigationProp } from '../../../types/types';
 import {
-  Container, Title, AlunoContainer, AlunoNome,
-  AlunoInfo, FecharButton, FecharText,
+  getResponsavel,
+  getAlunoSelecionado,
+  setAlunoSelecionado,
+} from '../../services/responsavelService';
+import {
+  Container,
+  Title,
+  AlunoContainer,
+  AlunoNome,
+  AlunoInfo,
+  FecharButton,
+  FecharText,
 } from './style';
-import { getResponsavel, getAlunoSelecionado, setAlunoSelecionado } from '../../services/responsavelService';
 
 const SelecaoPerfilScreen: React.FC<Props> = ({ navigation }) => {
   const responsavel = getResponsavel();

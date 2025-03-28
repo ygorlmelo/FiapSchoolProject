@@ -7,25 +7,24 @@ import { getAlunoSelecionado, getResponsavel } from '../../services/responsavelS
 import { AulaScreenProps } from '../../../types/types';
 import {
   Container,
-  Title,
-  Bold,
-  SubTitle,
-  Description,
-  SectionTitle,
-  DropdownContainer,
   TitleView,
+  TitleText,
   TitleInfoView,
+  DropdownContainer,
+  SectionTitleText,
+  SubTitleText,
+  DescriptionText,
 } from './styles';
 
 const AulaScreen: React.FC<AulaScreenProps> = () => {
   const [responsavel, setResponsavel] = useState(getResponsavel());
   const [aluno, setAluno] = useState(getAlunoSelecionado() ?? null);
-  const [dataSelecionada, setDataSelecionada] = useState(new Date(2025, 2, 16)); // início padrão
+  const [dataSelecionada, setDataSelecionada] = useState(new Date(2025, 2, 16));
 
   useFocusEffect(
     useCallback(() => {
       setResponsavel(getResponsavel());
-      setAluno(getAlunoSelecionado() ?? null); // <- adiciona fallback para null
+      setAluno(getAlunoSelecionado() ?? null);
     }, [])
   );
 
@@ -35,18 +34,18 @@ const AulaScreen: React.FC<AulaScreenProps> = () => {
     <Container>
       <Header showChangeProfile={hasMultipleAlunos} />
       <TitleView>
-        <Title>
-          Olá, <Bold>{responsavel?.primeiroNome}</Bold>
-        </Title>
+        <TitleText>
+          Olá, <TitleText bold={true}>{responsavel?.primeiroNome}</TitleText>
+        </TitleText>
       </TitleView>
       <TitleInfoView>
-        <SubTitle>{aluno?.primeiroNome}</SubTitle>
-        <Description>
+        <SubTitleText>{aluno?.primeiroNome}</SubTitleText>
+        <DescriptionText>
           {`${aluno?.turma} - RM ${aluno?.rm} - ${aluno?.periodo}`}
-        </Description>
+        </DescriptionText>
       </TitleInfoView>
       <TitleView>
-        <SectionTitle><Bold>AGENDA</Bold></SectionTitle>
+        <SectionTitleText bold={true}>AGENDA</SectionTitleText>
       </TitleView>
       <DropdownContainer>
         <Dropdown onDateChange={setDataSelecionada} />

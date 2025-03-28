@@ -27,7 +27,7 @@ const AulaScreen: React.FC<AulaScreenProps> = () => {
   const [responsavel, setResponsavel] = useState<Responsavel | null>(null);
   const [aluno, setAluno] = useState<Aluno | null>(null);
   const [dataSelecionada, setDataSelecionada] = useState(new Date(2025, 2, 16));
-  const [turmaSelecionada, setTurmaSelecionada] = useState<any | null>(null);
+  const [turmaSelecionada, setTurmaSelecionada] = useState<Aluno | null>(null);
   const route = useRoute();
   const isBoletim = route.name === 'Boletim';
 

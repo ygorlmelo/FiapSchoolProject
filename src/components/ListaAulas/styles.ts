@@ -12,14 +12,15 @@ export const ItemView = styled.View`
 
 export const HorarioView = styled.Text`
   font-size: 16px;
+  margin-bottom: 6px;
   color: #fff;
-  font-weight: bold;
 `;
 
 export const DisciplinaView = styled.Text`
   font-size: 16px;
   color: #fff;
   margin-bottom: 8px;
+  font-weight: bold;
 `;
 
 export const Text = styled.Text`

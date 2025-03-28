@@ -42,7 +42,7 @@ const AppTabs = () => (
     })}
   >
     <Tab.Screen name="Aulas" component={AulaScreen} />
-    <Tab.Screen name="Boletim" component={BoletimScreen} />
+    <Tab.Screen name="Boletim" component={AulaScreen} />
   </Tab.Navigator>
 );
 

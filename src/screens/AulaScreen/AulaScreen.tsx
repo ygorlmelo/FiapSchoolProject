@@ -1,8 +1,9 @@
 import React, { useState, useCallback } from 'react';
 import { useNavigation, useFocusEffect } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
+import { useRoute } from '@react-navigation/native';
 import Header from '../../components/Header/Header';
-import Dropdown from '../../components/Dropdown/Dropdown';
+import DropdownAgenda from '../../components/DropdownAgenda/DropdownAgenda';
 import ListaAulas from '../../components/ListaAulas/ListaAulas';
 import { getAlunoSelecionado, getResponsavel, clearStorage } from '../../services/responsavelService';
 import { Responsavel, Aluno, AulaScreenProps, RootStackParamList  } from '../../../types/types';
@@ -24,6 +25,9 @@ const AulaScreen: React.FC<AulaScreenProps> = () => {
   const [responsavel, setResponsavel] = useState<Responsavel | null>(null);
   const [aluno, setAluno] = useState<Aluno | null>(null);
   const [dataSelecionada, setDataSelecionada] = useState(new Date(2025, 2, 16));
+  const route = useRoute();
+  const isBoletim = route.name === 'Boletim';
+
 
   useFocusEffect(
     useCallback(() => {
@@ -68,10 +72,12 @@ const AulaScreen: React.FC<AulaScreenProps> = () => {
         </DescriptionText>
       </TitleInfoView>
       <TitleView>
-        <SectionTitleText bold={true}>AGENDA</SectionTitleText>
+        <SectionTitleText bold={true}>
+          {isBoletim ? 'BOLETIM' : 'AGENDA'}
+        </SectionTitleText>
       </TitleView>
       <DropdownContainer>
-        <Dropdown onDateChange={setDataSelecionada} />
+        <DropdownAgenda onDateChange={setDataSelecionada} />
       </DropdownContainer>
       <ListaAulas aluno={aluno} dataSelecionada={dataSelecionada} />
     </Container>

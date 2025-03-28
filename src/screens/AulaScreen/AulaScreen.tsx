@@ -1,4 +1,5 @@
 import React, { useState, useCallback } from 'react';
+import { ScrollView } from 'react-native';
 import { useNavigation, useFocusEffect } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { useRoute } from '@react-navigation/native';
@@ -27,7 +28,7 @@ const AulaScreen: React.FC<AulaScreenProps> = () => {
   const [responsavel, setResponsavel] = useState<Responsavel | null>(null);
   const [aluno, setAluno] = useState<Aluno | null>(null);
   const [dataSelecionada, setDataSelecionada] = useState(new Date(2025, 2, 16));
-  const [turmaSelecionada, setTurmaSelecionada] = useState<Aluno | null>(null);
+  const [turmaSelecionada, setTurmaSelecionada] = useState<any | null>(null);
   const route = useRoute();
   const isBoletim = route.name === 'Boletim';
 
@@ -81,15 +82,21 @@ const AulaScreen: React.FC<AulaScreenProps> = () => {
       </TitleView>
       <DropdownContainer>
         {isBoletim ? (
-        <DropdownBoletim />
+        <DropdownBoletim
+          responsavel={responsavel}
+          alunoSelecionado={aluno}
+          onTurmaSelecionada={setTurmaSelecionada}
+        />
       ) : (
         <DropdownAgenda onDateChange={setDataSelecionada} />
       )}
       </DropdownContainer>
       {isBoletim ? (
-        turmaSelecionada?.trimestres.map((tri: trimestre, index: number) => (
-          <BoletimCard key={index} trimestre={tri} />
-        ))
+        <ScrollView>
+          {turmaSelecionada?.trimestres?.map((tri, index) => (
+            <BoletimCard key={index} trimestre={tri} />
+          ))}
+        </ScrollView>
       ) : (
         <ListaAulas aluno={aluno} dataSelecionada={dataSelecionada} />
       )}

@@ -2,7 +2,7 @@ import styled from 'styled-components/native';
 import { TouchableOpacity } from 'react-native';
 
 export const DropdownContainer = styled.View`
-  width: 80%;
+  width: 100%;
   border-width: 1px;
   border-color: #000;
   border-radius: 8px;
@@ -20,6 +20,7 @@ export const SelectedItem = styled(TouchableOpacity)`
 
 export const OptionsContainer = styled.View`
   position: absolute;
+  margin-bottom: 6px;
   top: 40px;
   width: 100%;
   background-color: #1c1c1e;

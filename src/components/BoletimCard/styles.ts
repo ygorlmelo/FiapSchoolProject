@@ -1,11 +1,14 @@
 import styled from 'styled-components/native';
+import { Dimensions } from 'react-native';
+
+const { width } = Dimensions.get('window');
 
 export const CardContainer = styled.View`
+  width: ${width}px;
   margin-bottom: 16px;
   border-radius: 8px;
-  background-color: #fff;
+  background-color: #4D4D4D;
   padding: 16px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 `;
 
 export const HeaderButton = styled.TouchableOpacity`
@@ -16,5 +19,5 @@ export const HeaderButton = styled.TouchableOpacity`
 export const TrimestreText = styled.Text`
   font-size: 18px;
   font-weight: bold;
-  color: #333;
+  color: #29F4D5;
 `;

@@ -17,7 +17,7 @@ interface DropdownProps {
   onDateChange: (data: Date) => void;
 }
 
-const Dropdown: React.FC<DropdownProps> = ({ onDateChange }) => {
+const DropdownAgenda: React.FC<DropdownProps> = ({ onDateChange }) => {
   const [isOpen, setIsOpen] = useState(false);
   // Gerar datas de 16 a 22 de março de 2025
   const startDate = new Date(2025, 2, 16); // Março é mês 2 (0 indexado)
@@ -62,4 +62,4 @@ const Dropdown: React.FC<DropdownProps> = ({ onDateChange }) => {
   );
 };
 
-export default Dropdown;
+export default DropdownAgenda;

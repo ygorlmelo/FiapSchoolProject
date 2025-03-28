@@ -4,6 +4,7 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { useRoute } from '@react-navigation/native';
 import Header from '../../components/Header/Header';
 import DropdownAgenda from '../../components/DropdownAgenda/DropdownAgenda';
+import DropdownBoletim from '../../components/DropdownBoletim/DropdownBoletim';
 import ListaAulas from '../../components/ListaAulas/ListaAulas';
 import { getAlunoSelecionado, getResponsavel, clearStorage } from '../../services/responsavelService';
 import { Responsavel, Aluno, AulaScreenProps, RootStackParamList  } from '../../../types/types';
@@ -77,7 +78,11 @@ const AulaScreen: React.FC<AulaScreenProps> = () => {
         </SectionTitleText>
       </TitleView>
       <DropdownContainer>
+        {isBoletim ? (
+        <DropdownBoletim />
+      ) : (
         <DropdownAgenda onDateChange={setDataSelecionada} />
+      )}
       </DropdownContainer>
       <ListaAulas aluno={aluno} dataSelecionada={dataSelecionada} />
     </Container>

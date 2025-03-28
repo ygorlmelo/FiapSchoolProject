@@ -23,7 +23,7 @@ const ListaAulas: React.FC<ListaAulasProps> = ({ aluno, dataSelecionada }) => {
   if (!aluno) {return null;}
 
   const dataFormatada = format(dataSelecionada, 'yyyy-MM-dd');
-  const agendaDoDia = aluno.agenda.find((dia) => dia.dia === dataFormatada);
+  const agendaDoDia = aluno.agenda?.find((dia) => dia.dia === dataFormatada);
   const aulas = agendaDoDia?.aulas ?? [];
 
   return (

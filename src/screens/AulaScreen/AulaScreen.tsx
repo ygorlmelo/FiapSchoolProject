@@ -4,7 +4,7 @@ import Header from '../../components/Header/Header';
 import Dropdown from '../../components/Dropdown/Dropdown';
 import ListaAulas from '../../components/ListaAulas/ListaAulas';
 import { getAlunoSelecionado, getResponsavel } from '../../services/responsavelService';
-import { AulaScreenProps } from '../../../types/types';
+import { Responsavel, Aluno, AulaScreenProps } from '../../../types/types';
 import {
   Container,
   TitleView,
@@ -17,14 +17,21 @@ import {
 } from './styles';
 
 const AulaScreen: React.FC<AulaScreenProps> = () => {
-  const [responsavel, setResponsavel] = useState(getResponsavel());
-  const [aluno, setAluno] = useState(getAlunoSelecionado() ?? null);
+  const [responsavel, setResponsavel] = useState<Responsavel | null>(null);
+  const [aluno, setAluno] = useState<Aluno | null>(null);
   const [dataSelecionada, setDataSelecionada] = useState(new Date(2025, 2, 16));
 
   useFocusEffect(
     useCallback(() => {
-      setResponsavel(getResponsavel());
-      setAluno(getAlunoSelecionado() ?? null);
+      const carregarDados = async () => {
+        const responsavelSalvo = await getResponsavel();
+        const alunoSalvo = await getAlunoSelecionado();
+
+        setResponsavel(responsavelSalvo);
+        setAluno(alunoSalvo);
+      };
+
+      carregarDados();
     }, [])
   );
 

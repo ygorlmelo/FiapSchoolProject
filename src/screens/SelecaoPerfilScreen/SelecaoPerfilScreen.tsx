@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { SelecaoPerfilScreenNavigationProp } from '../../../types/types';
 import {
   getResponsavel,
@@ -14,13 +14,28 @@ import {
   FecharButton,
   FecharText,
 } from './style';
+import { Responsavel, Aluno } from '../../../types/types';
+
+type Props = {
+  navigation: SelecaoPerfilScreenNavigationProp;
+};
 
 const SelecaoPerfilScreen: React.FC<Props> = ({ navigation }) => {
-  const responsavel = getResponsavel();
-  const alunoAtual = getAlunoSelecionado();
+  const [responsavel, setResponsavel] = useState<Responsavel | null>(null);
+  const [alunoAtual, setAlunoAtual] = useState<Aluno | null>(null);
 
-  const handleSelectAluno = (index: number) => {
-    setAlunoSelecionado(index);
+  useEffect(() => {
+    const fetchData = async () => {
+      const r = await getResponsavel();
+      const a = await getAlunoSelecionado();
+      setResponsavel(r);
+      setAlunoAtual(a);
+    };
+    fetchData();
+  }, []);
+
+  const handleSelectAluno = async (index: number) => {
+    await setAlunoSelecionado(index);
     navigation.goBack();
   };
 
@@ -45,10 +60,6 @@ const SelecaoPerfilScreen: React.FC<Props> = ({ navigation }) => {
       </FecharButton>
     </Container>
   );
-};
-
-type Props = {
-  navigation: SelecaoPerfilScreenNavigationProp;
 };
 
 export default SelecaoPerfilScreen;

@@ -1,3 +1,4 @@
+import { Image } from 'react-native';
 import styled from 'styled-components/native';
 import { TouchableOpacity } from 'react-native';
 
@@ -7,7 +8,6 @@ export const HeaderContainer = styled.View`
   align-items: center;
   width: 100%;
   padding: 16px;
-  background-color: #000000;
 `;
 
 export const Logo = styled.Image`
@@ -17,11 +17,32 @@ export const Logo = styled.Image`
 `;
 
 export const ProfileButton = styled(TouchableOpacity)`
-  margin-right: 16px;
+  padding: 8px 12px;
 `;
 
 export const ProfileButtonText = styled.Text`
   color: #fff;
-  font-weight: bold;
   font-size: 14px;
+`;
+
+export const LogoutButton = styled.TouchableOpacity`
+  padding: 8px 12px;
+  flex-direction: row;
+  align-items: center;
+`;
+
+export const LogoutText = styled.Text`
+  color: #fff;
+  font-size: 14px;
+`;
+
+export const View = styled.View`
+  flex-direction: row;
+  align-items: center;
+`;
+
+export const LogoutImage = styled(Image)`
+  width: 10px;
+  height: 10px;
+  margin-left: 5px;
 `;

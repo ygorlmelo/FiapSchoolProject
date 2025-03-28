@@ -1,10 +1,11 @@
 import React, { useState, useCallback } from 'react';
-import { useFocusEffect } from '@react-navigation/native';
+import { useNavigation, useFocusEffect } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
 import Header from '../../components/Header/Header';
 import Dropdown from '../../components/Dropdown/Dropdown';
 import ListaAulas from '../../components/ListaAulas/ListaAulas';
-import { getAlunoSelecionado, getResponsavel } from '../../services/responsavelService';
-import { Responsavel, Aluno, AulaScreenProps } from '../../../types/types';
+import { getAlunoSelecionado, getResponsavel, clearStorage } from '../../services/responsavelService';
+import { Responsavel, Aluno, AulaScreenProps, RootStackParamList  } from '../../../types/types';
 import {
   Container,
   TitleView,
@@ -16,7 +17,10 @@ import {
   DescriptionText,
 } from './styles';
 
+type NavigationProp = StackNavigationProp<RootStackParamList>;
+
 const AulaScreen: React.FC<AulaScreenProps> = () => {
+  const navigation = useNavigation<NavigationProp>();
   const [responsavel, setResponsavel] = useState<Responsavel | null>(null);
   const [aluno, setAluno] = useState<Aluno | null>(null);
   const [dataSelecionada, setDataSelecionada] = useState(new Date(2025, 2, 16));
@@ -37,9 +41,21 @@ const AulaScreen: React.FC<AulaScreenProps> = () => {
 
   const hasMultipleAlunos = (responsavel?.alunos?.length ?? 0) > 1;
 
+  const handleLogout = async () => {
+    await clearStorage();
+    navigation.reset({
+      index: 0,
+      routes: [{ name: 'Login' }],
+    });
+  };
+
   return (
     <Container>
-      <Header showChangeProfile={hasMultipleAlunos} />
+      <Header
+        showChangeProfile={hasMultipleAlunos}
+        showLogoutButton={true}
+        onLogout={handleLogout}
+      />
       <TitleView>
         <TitleText>
           Olá, <TitleText bold={true}>{responsavel?.primeiroNome}</TitleText>

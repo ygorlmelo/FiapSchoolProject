@@ -13,6 +13,7 @@ import {
   AlunoInfo,
   FecharButton,
   FecharText,
+  CloseImage,
 } from './style';
 import { Responsavel, Aluno } from '../../../types/types';
 
@@ -48,7 +49,10 @@ const SelecaoPerfilScreen: React.FC<Props> = ({ navigation }) => {
           <AlunoContainer
             key={aluno.rm}
             onPress={() => handleSelectAluno(index)}
-            style={{ backgroundColor: isSelected ? '#e0f7fa' : 'white' }}
+            style={{
+              borderColor: isSelected ? '#29F4D5' : '#4D4D4D',
+              backgroundColor: '#4D4D4D',
+            }}
           >
             <AlunoNome>{aluno.primeiroNome.toUpperCase()} {responsavel.sobrenome.toUpperCase()}</AlunoNome>
             <AlunoInfo>{`${aluno.turma} - RM ${aluno.rm} - ${aluno.periodo}`}</AlunoInfo>
@@ -57,6 +61,7 @@ const SelecaoPerfilScreen: React.FC<Props> = ({ navigation }) => {
       })}
       <FecharButton onPress={() => navigation.goBack()}>
         <FecharText>FECHAR</FecharText>
+        <CloseImage source={require('../../assets/close.png')} />
       </FecharButton>
     </Container>
   );

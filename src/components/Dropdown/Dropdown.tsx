@@ -50,7 +50,7 @@ const Dropdown: React.FC<DropdownProps> = ({ onDateChange }) => {
               onPress={() => {
                 setSelectedItem(item.label);
                 setIsOpen(false);
-                onDateChange(item.value); // <- Aqui dispara a atualização
+                onDateChange(item.value);
               }}
             >
               <OptionText>{item.label}</OptionText>

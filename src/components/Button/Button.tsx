@@ -13,7 +13,7 @@ const Button: React.FC<Props> = ({ title, onPress, buttonStyle, textColor }) => 
   return (
     <TouchableOpacity onPress={onPress}>
       <Container style={buttonStyle}>
-        <Text style={{ color: textColor || '#000', fontWeight: 'bold' }}>{title}</Text>
+        <Text style={{ color: textColor || '#000000', fontWeight: 'bold' }}>{title}</Text>
       </Container>
     </TouchableOpacity>
   );

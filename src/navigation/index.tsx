@@ -4,17 +4,16 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import LoginScreen from '../screens/LoginScreen/LoginScreen';
 import AulaScreen from '../screens/AulaScreen/AulaScreen';
-import BoletimScreen from '../screens/BoletimScreen/BoletimScreen';
 import SelecaoPerfil from '../screens/SelecaoPerfilScreen/SelecaoPerfilScreen';
 
 import agendaLogo from '../assets/agendaLogo.png';
 import boletimLogo from '../assets/boletimLogo.png';
 
 import { TabIcon, TabIconContainer, styles } from './styles';
-import { RootStackParamList, RootTabParamList } from '../../types/types'; // Importe RootTabParamList
+import { RootStackParamList, RootTabParamList } from '../../types/types';
 
 const Stack = createStackNavigator<RootStackParamList>();
-const Tab = createBottomTabNavigator<RootTabParamList>(); // Defina o tipo aqui
+const Tab = createBottomTabNavigator<RootTabParamList>();
 
 const AppTabs = () => (
   <Tab.Navigator

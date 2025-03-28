@@ -22,6 +22,7 @@ export type SelecaoPerfilScreenNavigationProp = StackNavigationProp<RootStackPar
 
 // Screen props - Tab Navigator
 export type AulaScreenProps = BottomTabScreenProps<RootTabParamList, 'Aulas'>;
+//export type AulaScreenProps = BottomTabScreenProps<RootTabParamList>;
 export type BoletimScreenProps = BottomTabScreenProps<RootTabParamList, 'Boletim'>;
 
 export interface Aluno {
@@ -30,6 +31,7 @@ export interface Aluno {
     periodo: string;
     primeiroNome: string;
     agenda: any[];
+    boletim?: Boletim[];
   }
 
   export interface Responsavel {
@@ -40,4 +42,21 @@ export interface Aluno {
     primeiroNome: string;
     sobrenome: string;
     alunos: Aluno[];
+  }
+
+  export interface Boletim {
+    ano: string;
+    turma: string;
+    trimestres: Trimestre[];
+  }
+
+  export interface Trimestre {
+    trimestre: number;
+    disciplinas: Disciplina[];
+  }
+
+  export interface Disciplina {
+    nome: string;
+    nota: number;
+    faltas: number;
   }

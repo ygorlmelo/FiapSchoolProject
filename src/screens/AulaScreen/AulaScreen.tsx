@@ -7,7 +7,7 @@ import DropdownAgenda from '../../components/DropdownAgenda/DropdownAgenda';
 import DropdownBoletim from '../../components/DropdownBoletim/DropdownBoletim';
 import ListaAulas from '../../components/ListaAulas/ListaAulas';
 import { getAlunoSelecionado, getResponsavel, clearStorage } from '../../services/responsavelService';
-import { Responsavel, Aluno, AulaScreenProps, RootStackParamList  } from '../../../types/types';
+import { Responsavel, Aluno, AulaScreenProps, RootStackParamList, Trimestre  } from '../../../types/types';
 import {
   Container,
   TitleView,
@@ -18,6 +18,7 @@ import {
   SubTitleText,
   DescriptionText,
 } from './styles';
+import BoletimCard from '../../components/BoletimCard/BoletimCard';
 
 type NavigationProp = StackNavigationProp<RootStackParamList>;
 
@@ -26,6 +27,7 @@ const AulaScreen: React.FC<AulaScreenProps> = () => {
   const [responsavel, setResponsavel] = useState<Responsavel | null>(null);
   const [aluno, setAluno] = useState<Aluno | null>(null);
   const [dataSelecionada, setDataSelecionada] = useState(new Date(2025, 2, 16));
+  const [turmaSelecionada, setTurmaSelecionada] = useState<any | null>(null);
   const route = useRoute();
   const isBoletim = route.name === 'Boletim';
 
@@ -84,7 +86,13 @@ const AulaScreen: React.FC<AulaScreenProps> = () => {
         <DropdownAgenda onDateChange={setDataSelecionada} />
       )}
       </DropdownContainer>
-      <ListaAulas aluno={aluno} dataSelecionada={dataSelecionada} />
+      {isBoletim ? (
+        turmaSelecionada?.trimestres.map((tri: trimestre, index: number) => (
+          <BoletimCard key={index} trimestre={tri} />
+        ))
+      ) : (
+        <ListaAulas aluno={aluno} dataSelecionada={dataSelecionada} />
+      )}
     </Container>
   );
 };

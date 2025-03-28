@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 
-import { Container, Logo, InputContainer, ErrorMessage, Label } from './styles';
+import { Container, Logo, InputContainer, ErrorMessage, Label, ViewButton, ViewLogo } from './styles';
 import Input from '../../components/Input/Input';
 import Button from '../../components/Button/Button';
 import { maskCPF } from '../../utils/masks';
@@ -29,18 +28,26 @@ const LoginScreen: React.FC = () => {
   }, [navigation]);
 
   const handleLogin = async () => {
+    setError('');
     try {
       const token = await login(cpf, password);
-      await AsyncStorage.setItem('userToken', token);
-      navigation.replace('MainTabs');
+      if (token) {
+        await AsyncStorage.setItem('userToken', token);
+        navigation.replace('MainTabs');
+      } else {
+        setError('Usuário ou senha inválida.\nPode tentar novamente?');
+      }
     } catch (err) {
-      setError('Usuário ou senha inválida.\nPode tentar novamente?');
+      console.error('Erro no handleLogin:', err);
+      setError('Ocorreu um erro ao tentar fazer login.\nTente novamente mais tarde.');
     }
   };
 
   return (
     <Container>
-      <Logo source={require('../../assets/fiap.png')} resizeMode="contain" />
+      <ViewLogo>
+        <Logo source={require('../../assets/fiap.png')} resizeMode="contain" />
+      </ViewLogo>
       <InputContainer>
         <Label>CPF</Label>
         <Input
@@ -56,15 +63,20 @@ const LoginScreen: React.FC = () => {
           onChangeText={setPassword}
         />
         {error ? <ErrorMessage>{error}</ErrorMessage> : null}
-        <View>
-          <Button
-            title="FAZER LOGIN"
-            onPress={handleLogin}
-            buttonStyle={{ backgroundColor: '#29F4D5', padding: 2, borderRadius: 5, minHeight: 40 }}
-            textColor="#777777"
-          />
-        </View>
       </InputContainer>
+      <ViewButton>
+        <Button
+          title="FAZER LOGIN"
+          onPress={handleLogin}
+          buttonStyle={{
+            backgroundColor: '#29F4D5',
+            padding: 2,
+            borderRadius: 5,
+            minHeight: 40,
+          }}
+          textColor="#777777"
+        />
+      </ViewButton>
     </Container>
   );
 };

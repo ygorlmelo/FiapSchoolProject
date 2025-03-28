@@ -1,20 +1,18 @@
 import React from 'react';
 import { ScrollView } from 'react-native';
 import { format } from 'date-fns';
+import { Aluno } from '../../../types/types';
 import {
   ListaContainer,
-  AulaItem,
-  AulaHorario,
-  AulaDisciplina,
-  SemAulasText,
-  SemAulasContainer,
-  ImageView,
-  ImageStyled,
   Container,
   Content,
+  ImageStyled,
   Footer,
+  ItemView,
+  HorarioView,
+  DisciplinaView,
+  Text,
 } from './styles';
-import { Aluno } from '../../../types/types';
 
 interface ListaAulasProps {
   aluno: Aluno | null;
@@ -31,15 +29,6 @@ const ListaAulas: React.FC<ListaAulasProps> = ({ aluno, dataSelecionada }) => {
   return (
     <ListaContainer>
       {aulas.length === 0 ? (
-        // <SemAulasContainer>
-        //   <ImageView>
-        //     <ImageStyled
-        //       source={require('../../assets/aulaLogo.png')}
-        //       resizeMode="contain"
-        //     />
-        //   </ImageView>
-        //   <SemAulasText>Sem aulas neste dia</SemAulasText>
-        // </SemAulasContainer>
         <Container>
           <Content>
             <ImageStyled
@@ -48,16 +37,16 @@ const ListaAulas: React.FC<ListaAulasProps> = ({ aluno, dataSelecionada }) => {
             />
           </Content>
           <Footer>
-            <SemAulasText>Sem aulas neste dia</SemAulasText>
+            <Text>Sem aulas neste dia</Text>
           </Footer>
         </Container>
       ) : (
         <ScrollView showsVerticalScrollIndicator={false}>
           {aulas.map((aula: { horario: string; disciplina: string }, index: number) => (
-            <AulaItem key={index}>
-              <AulaHorario>{aula.horario}</AulaHorario>
-              <AulaDisciplina>{aula.disciplina}</AulaDisciplina>
-            </AulaItem>
+            <ItemView key={index}>
+              <HorarioView>{aula.horario}</HorarioView>
+              <DisciplinaView>{aula.disciplina}</DisciplinaView>
+            </ItemView>
           ))}
         </ScrollView>
       )}

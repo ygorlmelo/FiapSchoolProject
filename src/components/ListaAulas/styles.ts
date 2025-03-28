@@ -6,40 +6,26 @@ export const ListaContainer = styled.View`
   padding: 20px;
 `;
 
-export const AulaItem = styled.View`
+export const ItemView = styled.View`
   margin-bottom: 12px;
 `;
 
-export const AulaHorario = styled.Text`
+export const HorarioView = styled.Text`
   font-size: 16px;
   color: #fff;
   font-weight: bold;
 `;
 
-export const AulaDisciplina = styled.Text`
+export const DisciplinaView = styled.Text`
   font-size: 16px;
   color: #fff;
   margin-bottom: 8px;
 `;
 
-export const SemAulasContainer = styled.View`
-  align-items: center;
-  background-color: #00ff;
-  width: 100%;
-`;
-
-export const SemAulasText = styled.Text`
+export const Text = styled.Text`
   color: #fff;
   font-size: 16px;
   margin-top: 20px;
-`;
-
-export const ImageView = styled.View`
-  width: 80%;
-  height: auto;
-  aspect-ratio: 1;
-  align-items: center;
-  background-color: #1f2;
 `;
 
 export const ImageStyled = styled.Image`

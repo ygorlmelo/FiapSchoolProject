@@ -1,23 +1,27 @@
-import { StyleSheet } from 'react-native';
+import styled from 'styled-components/native';
+import { TouchableOpacity } from 'react-native';
 
-export default StyleSheet.create({
-  header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    width: '100%',
-    padding: 16,
-    backgroundColor: '#000', // Ajuste conforme necessário
-  },
-  logo: {
-    width: 120,
-    height: 30,
-    resizeMode: 'contain',
-  },
-  profileBtn: {
-    color: '#fff',
-    fontWeight: 'bold',
-    fontSize: 14,
-    marginRight: 16,
-  },
-});
+export const HeaderContainer = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 16px;
+  background-color: #000000;
+`;
+
+export const Logo = styled.Image`
+  width: 120px;
+  height: 30px;
+  resize-mode: contain;
+`;
+
+export const ProfileButton = styled(TouchableOpacity)`
+  margin-right: 16px;
+`;
+
+export const ProfileButtonText = styled.Text`
+  color: #fff;
+  font-weight: bold;
+  font-size: 14px;
+`;

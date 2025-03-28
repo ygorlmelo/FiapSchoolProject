@@ -1,9 +1,8 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../../../types/types';
-import styles from './styles';
+import { HeaderContainer, Logo, ProfileButton, ProfileButtonText } from './styles';
 
 interface HeaderProps {
   showChangeProfile?: boolean;
@@ -17,15 +16,16 @@ const Header: React.FC<HeaderProps> = ({ showChangeProfile }) => {
   const handleTrocarPerfil = () => {
     navigation.navigate('SelecaoPerfil');
   };
+
   return (
-    <View style={styles.header}>
-      <Image source={require('../../assets/fiap.png')} style={styles.logo} />
+    <HeaderContainer>
+      <Logo source={require('../../assets/fiap.png')} />
       {showChangeProfile && (
-        <TouchableOpacity onPress={handleTrocarPerfil}>
-        <Text style={styles.profileBtn}>TROCAR PERFIL</Text>
-      </TouchableOpacity>
-    )}
-    </View>
+        <ProfileButton onPress={handleTrocarPerfil}>
+          <ProfileButtonText>TROCAR PERFIL</ProfileButtonText>
+        </ProfileButton>
+      )}
+    </HeaderContainer>
   );
 };
 
